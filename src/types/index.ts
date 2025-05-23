@@ -1,24 +1,49 @@
+export type Product = {
+  id: number;
+  image: string | null;
+  name: string;
+  price: number;
+};
+
+export type PizzaSize = "S" | "M" | "L" | "XL";
+
+export type CartItem = {
+  id: string;
+  product: Product;
+  product_id: number;
+  size: PizzaSize;
+  quantity: number;
+};
+
+export const OrderStatusList: OrderStatus[] = [
+  "New",
+  "Cooking",
+  "Delivering",
+  "Delivered",
+];
+
+export type OrderStatus = "New" | "Cooking" | "Delivering" | "Delivered";
+
 export type Order = {
   id: number;
   created_at: string;
   total: number;
-  status: string;
   user_id: string;
-  order_items: OrderItem[];
+  status: OrderStatus;
+
+  order_items?: OrderItem[];
 };
 
 export type OrderItem = {
   id: number;
-  order_id: number;
-  size: string;
-  quantity: number;
   product_id: number;
   products: Product;
+  order_id: number;
+  size: PizzaSize;
+  quantity: number;
 };
 
-export type Product = {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
+export type Profile = {
+  id: string;
+  group: string;
 };

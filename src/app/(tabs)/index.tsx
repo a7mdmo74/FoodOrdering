@@ -8,33 +8,15 @@ const product = products[0];
 
 export default function MenuScreen() {
   return (
-    <View style={styles.container}>
+    <View style={{ flex: 1, padding: 10 }}>
       <FlatList
         data={products}
         renderItem={({ item }) => <ProductItem product={item} />}
         keyExtractor={(item) => item.id.toString()}
+        numColumns={2}
+        columnWrapperStyle={{ gap: 10 }}
+        contentContainerStyle={{ gap: 10 }}
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    backgroundColor: "white",
-    borderRadius: 10,
-  },
-  image: {
-    width: "100%",
-    aspectRatio: 1,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  price: {
-    color: Colors.light.tint,
-    fontSize: 16,
-    fontWeight: "600",
-  },
-});

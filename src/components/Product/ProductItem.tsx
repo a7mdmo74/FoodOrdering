@@ -3,10 +3,16 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import Colors from "@/src/constants/Colors";
 import { Product } from "@/src/types";
 
+const defaultImage =
+  "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png";
 export default function ProductItem({ product }: { product: Product }) {
   return (
     <View style={styles.container}>
-      <Image source={{ uri: product.image }} style={styles.image} />
+      <Image
+        source={{ uri: product.image ?? defaultImage }}
+        style={styles.image}
+        resizeMode="contain"
+      />
       <Text style={styles.title}>{product.name}</Text>
       <Text style={styles.price}>{product.price}</Text>
     </View>
@@ -20,7 +26,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "lightgray",
-    marginVertical: 5,
+    flex: 1,
+    maxWidth: "50%",
   },
   image: {
     width: "100%",
